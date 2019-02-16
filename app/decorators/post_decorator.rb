@@ -1,7 +1,7 @@
 module PostDecorator
 
   def card_content
-    content.truncate(40)
+    content
   end
 
   def user_name

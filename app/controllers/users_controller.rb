@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :login_user?, only: [:edit, :show, :update, :destroy]
-  before_action :admin_user?, only: [:index, :destroy]
+  before_action :login_user?, only: [:edit, :update, :destroy]
+  before_action :admin_user?, only: [:destroy]
 
   def new
     @user = User.new
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "ユーザー登録が完了しました"
-      redirect_to root
+      redirect_to root_path
     else
       flash.now[:danger] = "ユーザーの作成に失敗しました"
       render 'new'
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "情報の更新が完了しました"
-      redirect_to 'show'
+      redirect_to @user
     else
       flash.now[:warning] = "情報の更新に失敗しました"
       render 'edit'

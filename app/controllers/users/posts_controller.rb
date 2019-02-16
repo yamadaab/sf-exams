@@ -1,6 +1,6 @@
 module Users
   class PostsController < ApplicationController
-    before_action :correct_user?
+    before_action :correct_user?, only:[:edit, :update, :destroy]
 
     def index
       @user = current_user
@@ -9,6 +9,7 @@ module Users
 
     def show
       @post = Post.find(params[:id])
+      @comments = @post.comments
     end
 
     def new
@@ -61,7 +62,6 @@ module Users
     end
 
     def correct_user?
-      @user = User.first
       return true
     end
   end
