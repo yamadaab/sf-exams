@@ -1,0 +1,5 @@
+<%= form_for(@post.categories.build) do |f| %>
+  <%= f.label :"カテゴリー登録" %>
+  <%= f.text_field :name, placeholder: "カテゴリー名" %>
+  <%= f.submit "登録" %>
+<% end %>
