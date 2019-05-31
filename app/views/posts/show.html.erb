@@ -1,6 +1,8 @@
 <article class="posts--show">
   <h2 class="title"><span><%= @post.title %></span></h2>
   <section class="content"><%= simple_format(@post.content) %></section>
+  <%= link_to "編集", "posts#edit" %>
+  <%= link_to "削除", "posts#destroy" %>
   <div class="comments-container">
     <div style="border-top: solid 1px #777;">
       <h2 class="center">コメント一覧</h2>

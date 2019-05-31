@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @posst = current_user.posts.build
+    @post = current_user.posts.build
   end
 
   def create
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, :content)
   end
 
   def correct_user?
