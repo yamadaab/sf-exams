@@ -6,7 +6,8 @@
       <h2 class="center">コメント一覧</h2>
       <%= render @comments %>
     </div>
-    <%= form_with model: [:post, @post.comments.build], url: post_comments_path(post_id:params[:id]), class: 'comment-form' do |c| %>
+    <%= form_for @post.comments.build, class: 'comment-form' do |c| %>
+      <%= c.hidden_field :post_id, value: @post.id %>
       <%= c.hidden_field :user_id, value: current_user ? current_user.id : "" %>
       <%= c.text_area :content %>
       <div class="submit-container">

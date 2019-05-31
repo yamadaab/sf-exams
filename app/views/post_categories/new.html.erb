@@ -1,0 +1,5 @@
+<%= form_for @post_category do |f| %>
+  <%= f.collection_select :post_id, current_user.posts, :id, :title %>
+  <!-- 実装してください -->
+  <%= f.submit class:"form__items form__items--submit"  %>
+<% end %>

@@ -6,4 +6,7 @@
   <% end %>
   <div class="time"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></div>
   <div class="comment"><%= raw comment.content %></div>
+  <% if comment.user == current_user %>
+  <%= link_to '削除', comment, method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+  <% end %>
 </div>
