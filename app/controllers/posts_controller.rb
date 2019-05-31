@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 
   def destroy
@@ -59,6 +59,7 @@ class PostsController < ApplicationController
 
   def correct_user?
     # 実装してください
+    @posts = current_user.posts.find_by(id: params[:id])
     return true
   end
 end
