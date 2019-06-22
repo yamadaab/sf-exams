@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "投稿を削除しました"
-      redirect_to 'index'
+      redirect_to request.referrer || root_url
     else
       flash[:warning] = "投稿を削除できませんでした"
       redirect_to 'index'
