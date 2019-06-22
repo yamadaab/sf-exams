@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+    @post_category = PostCategory.all
   end
 
   def new
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "投稿を削除しました"
-      redirect_to request.referrer || root_url
+      redirect_to posts_url
     else
       flash[:warning] = "投稿を削除できませんでした"
       redirect_to 'index'

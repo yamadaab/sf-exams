@@ -5,6 +5,10 @@
     <div style="border-top: solid 1px #777;">
   <%= link_to "編集", edit_post_path, class: 'center', style: 'margin: 20px 0px;' %>
   <%= link_to "削除", @post, method: :delete, data: { confirm: "本当によろしいですか？" }, class: 'center', style: 'margin: 20px 0px;' %>
+  <p> カテゴリ　</p>
+  <% @post_category.each do |post_category| %>
+    <%= post_category.category.name %>
+  <% end %>
       <h2 class="center">コメント一覧</h2>
       <%= render @comments %>
     </div>

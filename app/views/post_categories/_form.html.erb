@@ -1,0 +1,7 @@
+<%= form_for @post_category do |f| %>
+  <%= f.collection_select :post_id, current_user.posts, :id, :title %>
+
+  <%= f.label :category_id, "カテゴリー" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
+  <%= f.submit class:"form__items form__items--submit"  %>
+<% end %>
