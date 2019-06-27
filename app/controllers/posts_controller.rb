@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :correct_user?, only:[:edit, :update, :destroy]
+  before_action :correct_user, only:[:edit, :update, :destroy]
 
   def index
     @posts = current_user.posts
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @post_category = PostCategory.all
+
   end
 
   def new
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
       redirect_to posts_url
     else
       flash[:warning] = "投稿を削除できませんでした"
-      redirect_to 'index'
+      redirect_to posts_url
     end
   end
 
@@ -58,8 +58,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content)
   end
 
-  def correct_user?
+  def correct_user
     # 実装してください
-    return true
+    @post = current_user.posts.find_by(id: params[:id])
+      flash[:notice] = "権限がありません"
+      redirect_to root_url if @post.nil?
   end
 end

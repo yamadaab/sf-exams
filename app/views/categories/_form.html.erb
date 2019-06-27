@@ -1,7 +1,5 @@
-<%= form_with(model: @category, local: true) do |form| %>
-
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit %>
-
+<%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
 <% end %>

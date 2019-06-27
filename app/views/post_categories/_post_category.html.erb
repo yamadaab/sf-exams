@@ -1,6 +1,6 @@
-<% @post_category.each do |post_category| %>
+
   <ul>
-  <%= post_category.category.name %>
-  <%= link_to 'Destroy', post_category, method: :delete, data: { confirm: '本当に消して大丈夫ですか？' } %>
+    <%= post_category.post.title %>
+    <%= post_category.category.name %>
+    <%= link_to 'Destroy', post_category, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
   </ul>
-<% end %>

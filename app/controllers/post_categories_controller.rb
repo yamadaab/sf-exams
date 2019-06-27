@@ -4,21 +4,26 @@ class PostCategoriesController < ApplicationController
   end
 
   def index
-    @post_category = PostCategory.all
+    @post_categories = PostCategory.all
   end
 
   def create
       @post_category = PostCategory.new(post_category_params)
     if @post_category.save
-      redirect_to posts_url, flash: {success: '作成が成功しました'}
+      flash[:success] = "作成が完了しました"
+      redirect_to post_categories_url
     else
-      redirect_to 'new'
+      redirect_to post_categories_url
     end
   end
 
   def destroy
+    @post_category = PostCategory.find(params[:id])
+    @post_category.destroy
+    flash[:success] = "削除しました"
+     redirect_to post_categories_url
+    end
   end
-end
 
 private
 
